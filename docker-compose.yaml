@@ -23,16 +23,20 @@ services:
     environment:
       - APP_DOMAIN=${APP_DOMAIN}
       - APP_PORT=${APP_PORT}
+      - APP_SSL_EBABLED=${APP_SSL_EBABLED}
     ports:
       - "80:80"
       - "443:443"
     volumes:
+      - ./nginx/entrypoint.sh:/entrypoint.sh
       - ./nginx/default.template:/etc/nginx/conf.d/default.template:ro
+      - ./nginx/cert:/etc/nginx/cert:ro
     networks:
       - app-network
-    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
     labels:
       - com.centurylinklabs.watchtower.enable=1
+    entrypoint: ["/entrypoint.sh"]
+    command: ["nginx", "-g", "daemon off;"]
 
   watchtower:
     container_name: watchtower
