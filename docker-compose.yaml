@@ -23,7 +23,6 @@ services:
     environment:
       - APP_DOMAIN=${APP_DOMAIN}
       - APP_PORT=${APP_PORT}
-      - APP_SSL_EBABLED=${APP_SSL_EBABLED}
     ports:
       - "80:80"
       - "443:443"
