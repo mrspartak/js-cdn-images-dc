@@ -42,6 +42,7 @@ UPLOAD_PATH_HOST=/path/to/image/storage
 
 4. Add permissions to your server's folder
 ```
+mkdir -p /path/to/image/storage
 chown 1000:1000 /path/to/image/storage
 ```
 
