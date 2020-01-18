@@ -23,7 +23,6 @@ services:
       - APP_DOMAIN=${APP_DOMAIN}
       - APP_PORT=${APP_PORT}
     ports:
-      - "80:80"
       - "443:443"
     volumes:
       - ./nginx/entrypoint.sh:/entrypoint.sh
