@@ -4,12 +4,14 @@ services:
   app:
     image: assorium/js-cdn-images:latest
     restart: always
-    ports:
-      - ${APP_PORT}:3000
+    expose: 
+      - ${APP_PORT}
     volumes:
       - ${UPLOAD_PATH_HOST}:/home/node/app/upload
     networks:
       - app-network
+    environment:
+      - PORT=${APP_PORT}
     labels:
       - com.centurylinklabs.watchtower.enable=1
 
